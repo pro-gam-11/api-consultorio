@@ -14,7 +14,7 @@ const agregar = async (req, res) => {
     try {
         const usuario = new Usuario(req.body);
         const usuarioGuardado = await usuario.save();
-        res.json({ body: usuarioGuardado, msg: "Documento creado correctamente.", ok: "SI" });
+        res.json({ body: usuarioGuardado, msg: "Usuario creado correctamente.", ok: "SI" });
     } catch (error) {
         console.log(error);
     }
@@ -39,13 +39,13 @@ const eliminar = async (req, res) => {
     const usuario = await Usuario.findById(id);
 
     if (!usuario) {
-        const error = new Error("Documento no encontrado.");
+        const error = new Error("Usuario no encontrado.");
         return res.status(404).json({ msg: error.message, ok: "NO" });
     }
 
     try {
         await usuario.deleteOne();
-        res.json({ msg: "Documento eliminado correctamente.", ok: "SI" });
+        res.json({ msg: "Usuario eliminado correctamente.", ok: "SI" });
     } catch (error) {
         console.log(error);
     }
@@ -59,7 +59,7 @@ const editar = async (req, res) => {
     const usuario = await Usuario.findById(id);
 
     if (!usuario) {
-        const error = new Error("Documento no encontrado.");
+        const error = new Error("Usuario no encontrado.");
         return res.status(404).json({ msg: error.message, ok: "NO" });
     }
 
@@ -82,7 +82,7 @@ const editar = async (req, res) => {
 
     try {
         const usuarioGuardado = await usuario.save();
-        res.json({ body: usuarioGuardado, msg: "Documento actualizado correctamente.", ok: "SI" });
+        res.json({ body: usuarioGuardado, msg: "Usuario actualizado correctamente.", ok: "SI" });
     } catch (error) {
         console.log(error);
     }
@@ -96,7 +96,7 @@ const listarUno = async (req, res) => {
     const usuario = await Usuario.findById(id);
 
     if (!usuario) {
-        const error = new Error("Documento no encontrado.");
+        const error = new Error("Usuario no encontrado.");
         return res.status(404).json({ msg: error.message, ok: "NO" });
     }
 
